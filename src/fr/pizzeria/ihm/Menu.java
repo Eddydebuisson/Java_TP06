@@ -5,11 +5,18 @@ import java.util.Scanner;
 import fr.pizzeria.dao.PizzaDao;
 
 public class Menu {
+	
+	
 	public PizzaDao dao;
 	private OptionMenu[] menu = new OptionMenu[4];
 	public static Scanner sc = new Scanner(System.in);
 
-	public Menu(){
+	/**
+	 * 
+	 * Instanciation de PizzaDao et du menu.
+	 *  
+	 */
+	public Menu() {
 		dao = new PizzaDao();
 		menu[0] = new ListerPizzasOptionMenu(dao);
 		menu[1] = new NouvellePizzaOptionMenu(dao);
@@ -17,21 +24,30 @@ public class Menu {
 		menu[3] = new SupprimerPizza(dao);
 
 	}
-	
-	
-	public void afficher(){
-		
+
+	/**
+	 * 
+	 *  Afichage du menu complet.
+	 * 
+	 */
+	public void afficher() {
+
 		System.out.println("***** Pizzeria Administration *****");
-		for (int i=0; i<menu.length;i++){
+		for (int i = 0; i < menu.length; i++) {
 			System.out.println(menu[i].getLibelle());
+
 		}
-		
+
 		System.out.println("99. Sortie");
 	}
-	
-	
-	public void startMenu(){
-		
+
+	/**
+	 * 
+	 *  Interface utilisateur
+	 * 
+	 */
+	public void startMenu() {
+
 		afficher();
 		int reponse = -1;
 		do {
@@ -58,8 +74,5 @@ public class Menu {
 		} while (reponse != 99);
 
 	}
-		
-		
-	}
-	
 
+}

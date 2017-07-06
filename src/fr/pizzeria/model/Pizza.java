@@ -20,6 +20,18 @@ public class Pizza {
 		this.nom=nom;
 		this.prix=prix;
 	}
+	
+	/**
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 */
+	public Pizza(String code, String nom, Double prix){
+	
+		this.code=code;
+		this.nom=nom;
+		this.prix=prix;
+	}
 
 	/**
 	 * @return

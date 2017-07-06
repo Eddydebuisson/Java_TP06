@@ -5,6 +5,9 @@ import fr.pizzeria.model.Pizza;
 
 public class NouvellePizzaOptionMenu extends OptionMenu {
 
+	/**
+	 * @param dao constructeur NouvellePizzaOptionMenu
+	 */
 	public NouvellePizzaOptionMenu(PizzaDao dao) {
 		this.dao = dao;
 		
@@ -12,7 +15,6 @@ public class NouvellePizzaOptionMenu extends OptionMenu {
 
 	@Override
 	public String getLibelle() {
-		// TODO Auto-generated method stub
 		return "2. Ajouter une nouvelle pizza";
 	}
 
@@ -27,13 +29,12 @@ public class NouvellePizzaOptionMenu extends OptionMenu {
 			String nom = Menu.sc.next();
 			System.out.println("Veuillez saisir le prix");
 			String prix = Menu.sc.next();
-			int i = 0;
-			for (Pizza s : dao.FindAllPizza()) {
-				if (s != null) {
-					i++;
-				}
-			}
-			dao.FindAllPizza()[i] = new Pizza(i, code, nom, Double.parseDouble(prix));
+			
+			// Instanciation pizza
+			Pizza pizza =  new Pizza(code, nom, Double.parseDouble(prix));
+			
+			// Sauvegarde pizza
+			dao.saveNewPizza(pizza);
 		}
 
 		return true;
